@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === 'dev'){
 }else {
 
     // BD Remota
-    urlDB = 'mongodb+srv://ssdev:EUZVHwCT8qD4p5Gh@cluster0.x7dw9.mongodb.net/cafe'
+    urlDB = process.env.MONGO_URI;
 
 }
 
