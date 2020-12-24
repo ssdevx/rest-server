@@ -13,17 +13,17 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev'
 
 let urlDB;
 
-//if(process.env.NODE_ENV === 'dev'){
+if(process.env.NODE_ENV === 'dev'){
 
     // BD Local
-    //urlDB = 'mongodb://localhost:27017/cafe'
+    urlDB = 'mongodb://localhost:27017/cafe'
 
-//}else {
+}else {
 
     // BD Remota
     urlDB = 'mongodb+srv://ssdev:EUZVHwCT8qD4p5Gh@cluster0.x7dw9.mongodb.net/cafe'
 
-//}
+}
 
  process.env.URLDB = urlDB;
 
