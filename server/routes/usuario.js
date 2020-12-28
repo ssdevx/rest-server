@@ -3,19 +3,17 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const Usuario = require('../modelos/usuario');
+const { verficarToken, verficarAdminRole } = require('../middlewares/autenticacion');
 
 const app = express();
 
 
 
  
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verficarToken,  function (req, res) {
     
     //skip(5) -> Salta 5 registros
     //limit(5) -> Recupera 5 registros
-    let status = {
-        estado:true
-    }
 
     let desde = req.query.desde || 0;
     desde = Number(desde);
@@ -47,7 +45,7 @@ app.get('/usuario', function (req, res) {
 })
   
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario', [verficarToken, verficarAdminRole], function (req, res) {
   
     const body = req.body;
 
@@ -78,7 +76,7 @@ app.post('/usuario', function (req, res) {
 })
 
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', [verficarToken, verficarAdminRole], function (req, res) {
       
     let id = req.params.id;
     //let body = req.body;
@@ -108,7 +106,7 @@ app.put('/usuario/:id', function (req, res) {
 })
   
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', [verficarToken, verficarAdminRole], function (req, res) {
     
     let id = req.params.id;
 
