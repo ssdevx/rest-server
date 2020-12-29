@@ -3,14 +3,14 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const Usuario = require('../modelos/usuario');
-const { verficarToken, verficarAdminRole } = require('../middlewares/autenticacion');
+const { verificarToken, verificarAdminRole } = require('../middlewares/autenticacion');
 
 const app = express();
 
 
 
  
-app.get('/usuario', verficarToken,  function (req, res) {
+app.get('/usuario', verificarToken,  function (req, res) {
     
     //skip(5) -> Salta 5 registros
     //limit(5) -> Recupera 5 registros
@@ -45,7 +45,7 @@ app.get('/usuario', verficarToken,  function (req, res) {
 })
   
 
-app.post('/usuario', [verficarToken, verficarAdminRole], function (req, res) {
+app.post('/usuario', [verificarToken, verificarAdminRole], function (req, res) {
   
     const body = req.body;
 
@@ -76,7 +76,7 @@ app.post('/usuario', [verficarToken, verficarAdminRole], function (req, res) {
 })
 
 
-app.put('/usuario/:id', [verficarToken, verficarAdminRole], function (req, res) {
+app.put('/usuario/:id', [verificarToken, verificarAdminRole], function (req, res) {
       
     let id = req.params.id;
     //let body = req.body;
@@ -106,7 +106,7 @@ app.put('/usuario/:id', [verficarToken, verficarAdminRole], function (req, res) 
 })
   
 
-app.delete('/usuario/:id', [verficarToken, verficarAdminRole], function (req, res) {
+app.delete('/usuario/:id', [verificarToken, verificarAdminRole], function (req, res) {
     
     let id = req.params.id;
 

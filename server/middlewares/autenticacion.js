@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-let verficarToken = (req, res, next) => {
+let verificarToken = (req, res, next) => {
 
     // Obtener el header, se llama token en este caso.
     let token = req.get('token');
@@ -22,7 +22,7 @@ let verficarToken = (req, res, next) => {
 
 // Verificar Admin Role
 
-let verficarAdminRole = (req, res, next) => {
+let verificarAdminRole = (req, res, next) => {
 
     let usuario = req.usuario;
 
@@ -46,6 +46,6 @@ let verficarAdminRole = (req, res, next) => {
 
 
 module.exports = {
-    verficarToken,
-    verficarAdminRole
+    verificarToken,
+    verificarAdminRole
 }
